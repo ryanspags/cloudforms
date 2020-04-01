@@ -1,5 +1,6 @@
 ---
 - name: Deploy two vms and attach one shared data disk
+  hosts: all
   become: true
   tasks:
     -name: Create two new Virtual Machines from template
