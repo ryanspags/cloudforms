@@ -1,0 +1,18 @@
+---
+- name: Deploy two vms and attach one shared data disk
+  become: true
+  tasks:
+    -name: Create two new Virtual Machines from template
+     ovirt_vm:
+       state: present
+       name: "{{ item }}"
+       template: centos7shared_temp
+       cluster: default
+       disks:
+         - name: shared
+           bootable: False
+           shareable: Yes
+     loop:
+       - myvm1
+       - myvm2
+
